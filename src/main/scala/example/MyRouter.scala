@@ -2,7 +2,7 @@ package example
 
 import java.util.UUID
 
-import example.resources.{StatusResource, UserResource}
+import example.controllers.{StatusController, UserController}
 import example.model.UserId
 import javax.inject.{Inject, Singleton}
 import monoton.server.RoutingDSL
@@ -10,8 +10,8 @@ import monoton.util.Read
 
 @Singleton
 class MyRouter @Inject()(
-  statusResource: StatusResource,
-  userResource: UserResource
+  statusResource: StatusController,
+  userResource: UserController
 ) extends RoutingDSL {
 
   implicit def userIdRead(implicit M: Read[UUID]): Read[UserId] = M.map(UserId.apply)

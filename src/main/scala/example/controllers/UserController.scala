@@ -1,14 +1,14 @@
-package example.resources
+package example.controllers
 
 import java.util.UUID
 
 import example.model.{User, UserDataAccessor, UserId}
 import io.circe.{Json, Printer}
 import monoton.http.{CirceJson, Form, FormMapping}
-import monoton.server.{Handler, Resource}
+import monoton.server.{Controller, Handler}
 
-class UserResource extends Resource {
-  import UserResource._
+class UserController extends Controller {
+  import UserController._
   import monoton.http.codec.circe._
 
   def list(): RequestHandler =
@@ -36,7 +36,7 @@ class UserResource extends Resource {
     } yield Ok(resJson)
 }
 
-object UserResource {
+object UserController {
 
   final case class CreateUserForm(name: String, age: Int)
   val createUserFormMapping: FormMapping[CreateUserForm] =
