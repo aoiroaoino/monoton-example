@@ -4,7 +4,8 @@ import java.util.UUID
 
 import example.model.{User, UserDataAccessor, UserId}
 import io.circe.{Json, Printer}
-import monoton.http.{CirceJson, Form, FormMapping}
+import monoton.http.codec.CirceJson
+import monoton.http.{Form, FormMapping}
 import monoton.server.{Controller, Handler}
 
 class UserController extends Controller {
